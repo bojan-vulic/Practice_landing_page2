@@ -1,0 +1,57 @@
+// RESET STYLE
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// BASIC STYLE
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: $textFont;
+  line-height: 1.5;
+  font-size: $fontSize;
+  font-weight: 400;
+  color: $black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headings;
+  font-weight: 700;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color $transition;
+  &:hover {
+    text-decoration: none;
+  }
+}
+img {
+  object-fit: cover;
+  display: block;
+}
+.py {
+  padding: $py;
+  @media (max-width: 768px) {
+    padding: 30px 0;
+  }
+}
+.container {
+  width: $containerWidth;
+  margin: 0 auto;
+  @media (max-width: 1140px) {
+    // width: 95%;
+  }
+}

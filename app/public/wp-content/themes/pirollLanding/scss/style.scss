@@ -1,0 +1,616 @@
+@import "var";
+@import "mixins";
+@import "basic";
+@import "global";
+
+/**************
+NAV
+**************/
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 50px 0;
+  transition: background-color $transition, padding-top $transition,
+    padding-bottom $transition;
+  z-index: 30;
+  &.scrolled {
+    background-color: rgba($turquoise, 0.9);
+    padding: 20px 0;
+    button:hover,
+    li:hover a {
+      color: $white;
+    }
+  }
+
+  article {
+    @include flex(space-between, center);
+    div {
+      transform: scale(1);
+      opacity: 1;
+      @media (max-width: 820px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba($black, 1);
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+    ul {
+      @include flex(flex-end, center);
+      @media (max-width: 820px) {
+        @include flex(space-between, center, column);
+        color: $white;
+        height: 100%;
+        padding: 10%;
+      }
+      li {
+        text-transform: uppercase;
+        margin-left: 30px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        @media (max-width: 820px) {
+          margin-left: 0;
+          font-size: 2rem;
+          flex: 1;
+          line-height: 1;
+        }
+        &:first-child {
+          margin-left: 0px;
+        }
+        &:hover {
+          color: $turquoise;
+        }
+        &.menuBtn {
+          color: $white;
+          background-color: transparent;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  #menuList {
+    z-index: 10;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    &.active {
+      animation-name: fadeInMenu;
+    }
+    &.inActive {
+      transform: scale(1);
+      opacity: 1;
+      animation-name: fadeOutMenu;
+    }
+  }
+
+  @keyframes fadeInMenu {
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes fadeOutMenu {
+    to {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+  .menuBtn {
+    align-self: center;
+    font-size: 1.3rem;
+    background: transparent;
+    color: $black;
+    cursor: pointer;
+    transition: background-color $transition, color $transition;
+    display: none;
+    border: none;
+    outline: none;
+    @media (max-width: 820px) {
+      display: block;
+    }
+    &:hover {
+      background-color: $white;
+      color: $turquoise;
+      @media (max-width: 820px) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+/**************
+HEADER
+**************/
+header {
+  background: url("../img/header-bg-1.jpg");
+  @include bgBasic;
+  color: rgba($black, 0.6);
+  padding: 50px;
+  article {
+    @include flex(flex-end, center);
+    min-height: 70vh;
+    @media (max-width: 820px) {
+      height: auto;
+      min-height: 100vh;
+    }
+    div {
+      flex: 0 0 40%;
+      @media (max-width: 820px) {
+        flex: 0 0 100%;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2.3rem;
+  }
+  p {
+    font-size: 1.2rem;
+
+    margin: 40px 0;
+  }
+}
+
+/**************
+ABOUT
+**************/
+.about {
+  @include flex(center, center, column);
+  text-align: center;
+  p {
+    margin: 30px 0;
+  }
+}
+
+/**************
+SKILL
+**************/
+.skill {
+  @include flex(center, center);
+  background-color: rgba($gray, 0.02);
+  article {
+    flex: 1 0 50%;
+    min-width: 530px;
+    @media (max-width: 530px) {
+      min-width: unset;
+    }
+    &:first-child {
+      @include flex(flex-start, center, column);
+      $yPadding: (100% - $containerWidth) / 2;
+      padding: 0 $yPadding;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  ul {
+    width: 100%;
+    margin-top: 40px;
+  }
+  .progress {
+    width: 100%;
+    height: 4px;
+    background-color: rgba($gray, 0.5);
+    position: relative;
+    margin-bottom: 30px;
+    &-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      background-color: $turquoise;
+      animation-fill-mode: forwards;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      &.load {
+        animation-name: skillLoad;
+      }
+    }
+  }
+
+  @keyframes skillLoad {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  p {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 15px;
+    span {
+      margin-left: 10px;
+      display: inline-block;
+    }
+  }
+}
+
+/*************
+STATISTICS
+*************/
+.statistics {
+  background-color: $turquoise;
+  padding: 100px 0;
+  article {
+    @include flex;
+    color: $white;
+    div {
+      @include flex(center, center);
+      flex: 1 0 25%;
+      min-width: 250px;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 30px;
+      @media (max-width: 600px) {
+        flex: 1 0 100%;
+      }
+      img {
+        width: 40px;
+        margin-right: 30px;
+      }
+      ul {
+        @media (max-width: 600px) {
+          margin-right: auto;
+        }
+        li {
+          @media (max-width: 600px) {
+            display: inline-block;
+          }
+          @media (max-width: 310px) {
+            display: block;
+          }
+        }
+      }
+      .limitNum {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+/*************
+WORKS
+*************/
+.works {
+  &-gallery {
+    @include flex;
+    & > div {
+      flex: 1 0 25%;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      min-width: 280px;
+      &:hover {
+        span {
+          transform: scale(1);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+    span {
+      background-image: url(../img/pe-7s-look.png);
+      background-color: rgba($black, 0.7);
+      @include bgBasic(center, auto);
+      position: absolute;
+      font-size: 2rem;
+      color: $white;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      top: 0;
+      backface-visibility: hidden;
+      transform: scale(0);
+      transition: transform $transition;
+      z-index: 10;
+      transform-origin: center;
+    }
+  }
+  .preview {
+    position: fixed;
+    @include flex(center, center, column);
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.99);
+    z-index: 31;
+    padding: 0 5%;
+    &-nav {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      transform: translateY(-50%);
+      &-prev {
+        float: left;
+      }
+      &-next {
+        float: right;
+      }
+    }
+    &-control {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .items {
+      height: 80vh;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    i {
+      color: $white;
+      font-size: 2rem;
+      transition: color $transition;
+      cursor: pointer;
+      &:hover {
+        color: $turquoise;
+      }
+    }
+    button {
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+  }
+
+  &-btn {
+    background-color: $lightGray;
+    color: rgba($gray, 0.7);
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 30px;
+  }
+}
+
+/*************
+PROCESS
+*************/
+.process {
+  .video {
+    position: relative;
+    flex: 1;
+    &.container {
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    &-player {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    &-control {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      button {
+        background-color: $turquoise;
+        color: $white;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+    &-play {
+      display: block;
+      height: 6em;
+      width: 6em;
+      line-height: 6em;
+      @media (max-width: 480px) {
+        height: 4em;
+        width: 4em;
+        line-height: 4em;
+      }
+    }
+    &-pause {
+      display: none;
+      height: 4em;
+      width: 4em;
+      line-height: 4em;
+    }
+  }
+}
+
+/*************
+SERVICES
+*************/
+.services {
+  background-color: $lightGray;
+  article {
+    @include flex;
+    div {
+      @include flex(center, center, column);
+      flex: 0 0 25%;
+      min-width: 180px;
+      padding: 25px;
+      text-align: center;
+      @media (max-width: 480px) {
+        flex: 0 0 100%;
+      }
+      h5 {
+        text-transform: uppercase;
+        margin: 15px 0;
+      }
+      p {
+        font-size: 0.9rem;
+        color: $gray;
+      }
+    }
+  }
+}
+
+/*************
+TESTIMONIAL
+*************/
+.testimonial {
+  background-color: $turquoise;
+  color: $white;
+  .item {
+    text-align: center;
+    p {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+    h5 {
+      flex: 1;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-top: 30px;
+    }
+  }
+}
+
+/*************
+PARTNERS
+*************/
+.partners {
+  @include flex;
+  article {
+    flex: 1 0 20%;
+    min-width: 200px;
+    @media (max-width: 1176px) {
+      margin-bottom: 30px;
+    }
+    img {
+      margin: 0 auto;
+    }
+  }
+}
+
+/*************
+CONTACT
+*************/
+.contact {
+  background-color: $lightGray;
+  form {
+    @include flex;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 680px;
+    @media (max-width: 1050px) {
+      max-width: unset;
+      margin-top: 30px;
+    }
+    input,
+    textarea {
+      font-family: $headings;
+      font-weight: 600;
+      padding: 10px 15px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+    input {
+      flex: 0 0 48%;
+      margin-bottom: 20px;
+      @media (max-width: 615px) {
+        flex: 0 0 100%;
+      }
+      &:last-of-type {
+        flex: 0 0 100%;
+      }
+    }
+    textarea {
+      margin-bottom: 20px;
+      flex: 0 0 100%;
+      resize: none;
+    }
+
+    button {
+      margin: 0 auto;
+    }
+  }
+}
+
+/*************
+FOOTER
+*************/
+footer {
+  background-color: $black;
+  article {
+    @include flex(space-between, flex-start);
+
+    div {
+      flex-grow: 1;
+      font-family: $headings;
+      font-size: 1rem;
+      line-height: 1.3;
+      color: rgba($gray, 1);
+      font-weight: 600;
+      min-width: 130px;
+
+      h3 {
+        color: $white;
+        font-size: 1.1rem;
+        font-family: $textFont;
+        margin-bottom: 20px;
+      }
+      li {
+        line-height: 1.8;
+      }
+    }
+
+    .col-1 {
+      width: 39%;
+    }
+
+    .col-1,
+    .col-2 {
+      @media (max-width: 1110px) {
+        flex: 0 0 49%;
+        margin-bottom: 30px;
+      }
+      @media (max-width: 600px) {
+        flex: 0 0 100%;
+      }
+    }
+
+    .col-3,
+    .col-4,
+    .col-5 {
+      @media (max-width: 1110px) {
+        flex: 0 0 32%;
+      }
+      @media (max-width: 600px) {
+        flex: 0 0 49%;
+        margin-bottom: 20px;
+      }
+    }
+    [class*="col-"] {
+      @media (max-width: 305px) {
+        flex-grow: 1;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+h2 {
+  font-size: 1.9rem;
+  @media (max-width: 480px) {
+    text-align: center;
+    font-size: 1.7rem;
+  }
+}
+hgroup,
+hgroup.container {
+  text-align: center;
+  margin: 0 auto 60px;
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    @media (max-width: 480px) {
+      text-align: center;
+      font-size: 1.7rem;
+    }
+  }
+  p {
+    color: $gray;
+    font-weight: 500;
+  }
+}
+.btn {
+  background-color: $turquoise;
+  padding: 1em 3em;
+  text-transform: uppercase;
+  color: $white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: all $transition;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba($turquoise, 0.5);
+    color: $black;
+  }
+}

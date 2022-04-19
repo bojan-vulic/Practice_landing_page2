@@ -1,0 +1,13 @@
+[19-Apr-2022 10:58:38 UTC] PHP Warning:  Error while sending QUERY packet. PID=8376 in /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/wp-db.php on line 2056
+[19-Apr-2022 10:58:38 UTC] PHP Stack trace:
+[19-Apr-2022 10:58:38 UTC] PHP   1. {main}() /home/ivana/Local Sites/pirolllanding/app/public/wp-cron.php:0
+[19-Apr-2022 10:58:38 UTC] PHP   2. do_action_ref_array() /home/ivana/Local Sites/pirolllanding/app/public/wp-cron.php:138
+[19-Apr-2022 10:58:38 UTC] PHP   3. WP_Hook->do_action() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/plugin.php:518
+[19-Apr-2022 10:58:38 UTC] PHP   4. WP_Hook->apply_filters() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/class-wp-hook.php:327
+[19-Apr-2022 10:58:38 UTC] PHP   5. WP_Site_Health->wp_cron_scheduled_check() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/class-wp-hook.php:303
+[19-Apr-2022 10:58:38 UTC] PHP   6. set_transient() /home/ivana/Local Sites/pirolllanding/app/public/wp-admin/includes/class-wp-site-health.php:2816
+[19-Apr-2022 10:58:38 UTC] PHP   7. update_option() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/option.php:951
+[19-Apr-2022 10:58:38 UTC] PHP   8. wpdb->update() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/option.php:487
+[19-Apr-2022 10:58:38 UTC] PHP   9. wpdb->query() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/wp-db.php:2360
+[19-Apr-2022 10:58:38 UTC] PHP  10. wpdb->_do_query() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/wp-db.php:1945
+[19-Apr-2022 10:58:38 UTC] PHP  11. mysqli_query() /home/ivana/Local Sites/pirolllanding/app/public/wp-includes/wp-db.php:2056
